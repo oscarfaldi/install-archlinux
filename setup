@@ -1,0 +1,49 @@
+#!/bin/bash
+# ==============================
+# Arch Linux Minimal -> Hyprland Setup
+# Repo: https://github.com/oscarfaldi/install-archlinux.git
+# ==============================
+
+# Update system
+sudo pacman -Syu --noconfirm
+
+# Install essential packages
+sudo pacman -S --noconfirm git base-devel wget vim
+
+# Install network manager
+sudo pacman -S --noconfirm networkmanager
+sudo systemctl enable --now NetworkManager
+
+# Install Hyprland + dependencies
+sudo pacman -S --noconfirm hyprland xorg-xwayland wlroots wofi dunst grim slurp xdg-desktop-portal-hyprland
+
+# Install display/login manager Ly
+sudo pacman -S --noconfirm ly
+sudo systemctl enable ly
+
+# Install Nvidia proprietary drivers
+sudo pacman -S --noconfirm nvidia-dkms dkms libva-nvidia-driver xorg-server xorg-xinit
+# No need to start anything, driver will load at boot via DKMS
+
+# Install file manager + terminal
+sudo pacman -S --noconfirm nautilus foot
+
+# Install audio packages
+sudo pacman -S --noconfirm pipewire pipewire-alsa pipewire-pulse pipewire-jack pavucontrol
+sudo systemctl enable --now pipewire pipewire-pulse
+
+# Install Firefox
+sudo pacman -S --noconfirm firefox
+
+# Optional: cleanup orphan packages
+sudo pacman -Rns $(pacman -Qdtq) || true
+
+# Optional: create autostart folder for Hyprland (if not exist)
+mkdir -p ~/.config/hypr
+echo "# ~/.config/hypr/autostart" > ~/.config/hypr/autostart
+echo "nautilus &" >> ~/.config/hypr/autostart
+echo "foot &" >> ~/.config/hypr/autostart
+
+echo "=============================="
+echo "Setup complete! Reboot recommended."
+echo "Ly + Hyprland + Nvidia + Pipewire + Nautilus + Foot + Firefox should be ready on boot."
