@@ -38,12 +38,6 @@ sudo pacman -S --noconfirm firefox
 # Optional: cleanup orphan packages
 sudo pacman -Rns $(pacman -Qdtq) || true
 
-# Optional: create autostart folder for Hyprland (if not exist)
-mkdir -p ~/.config/hypr
-echo "# ~/.config/hypr/autostart" > ~/.config/hypr/autostart
-echo "nautilus &" >> ~/.config/hypr/autostart
-echo "foot &" >> ~/.config/hypr/autostart
-
 # Reminder for apps to add in hyprland.conf
 echo "=============================="
 echo "Setup complete! Reboot recommended."
