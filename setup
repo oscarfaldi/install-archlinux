@@ -10,7 +10,7 @@ sudo pacman -Syu --noconfirm
 # Install essential packages
 sudo pacman -S --noconfirm git base-devel wget vim
 
-# Install network manager
+# Install NetworkManager
 sudo pacman -S --noconfirm networkmanager
 sudo systemctl enable --now NetworkManager
 
@@ -23,7 +23,7 @@ sudo systemctl enable ly
 
 # Install Nvidia proprietary drivers
 sudo pacman -S --noconfirm nvidia-dkms dkms libva-nvidia-driver xorg-server xorg-xinit
-# No need to start anything, driver will load at boot via DKMS
+# DKMS driver akan load otomatis di boot
 
 # Install file manager + terminal
 sudo pacman -S --noconfirm nautilus foot
@@ -44,6 +44,18 @@ echo "# ~/.config/hypr/autostart" > ~/.config/hypr/autostart
 echo "nautilus &" >> ~/.config/hypr/autostart
 echo "foot &" >> ~/.config/hypr/autostart
 
+# Reminder for apps to add in hyprland.conf
 echo "=============================="
 echo "Setup complete! Reboot recommended."
 echo "Ly + Hyprland + Nvidia + Pipewire + Nautilus + Foot + Firefox should be ready on boot."
+echo ""
+echo "Reminder: jangan lupa tweak ~/.config/hypr/hyprland.conf untuk autostart apps tambahan:"
+echo " - Dunst (notification daemon)"
+echo " - Wofi (launcher)"
+echo " - Pipewire/Audio services (udah auto via systemctl)"
+echo "Contoh di hyprland.conf:"
+echo "exec = dunst &"
+echo "exec = wofi &"
+echo "exec = nautilus &"
+echo "exec = foot &"
+echo "=============================="
