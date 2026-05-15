@@ -56,7 +56,7 @@ paru -S --noconfirm \
 # Aktifkan services agar langsung jalan
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth
-sudo systemctl enable --now syncthing@$USER.service
+sudo systemctl enable --now syncthing
 
 # --- 10. SYSTEMD SYSTEM AUTOMATIC LOGIN (BYPASS PASSWORD AT BOOT) ---
 echo "Configuring systemd getty for automatic passwordless login..."
