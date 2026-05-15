@@ -39,7 +39,7 @@ fi
 # --- 3. GRAPHICS & CORE ---
 # Nvidia driver & XDG Portal (biar browser bisa buka file/folder)
 sudo pacman -S --noconfirm \
-    hyprland nvidia nvidia-utils \
+    hyprland nvidia-dkms nvidia-utils \
     xdg-desktop-portal-hyprland xdg-utils
 
 # --- 4. NETWORK & ACCESS ---
