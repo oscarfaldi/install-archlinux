@@ -18,7 +18,7 @@ fi
 # --- 3. GRAPHICS & CORE ---
 # Nvidia driver & XDG Portal (biar browser bisa buka file/folder)
 sudo pacman -S --noconfirm \
-    hyprland nvidia-dkms nvidia-utils \
+    hyprland nvidia nvidia-utils \
     xdg-desktop-portal-hyprland
 
 # --- 4. NETWORK & ACCESS ---
@@ -36,7 +36,7 @@ sudo pacman -S --needed --noconfirm \
 # --- 6. SYSTEM UTILS & FONTS ---
 # Kitty (Terminal), JetBrains Mono (Font), btop (Task Manager), hypridle (Timeout)
 sudo pacman -S --noconfirm \
-    alacritty ttf-jetbrains-mono-nerd \
+    alacritty ly ttf-jetbrains-mono-nerd \
     fastfetch btop hypridle
 
 # --- 7. APPS (OFFICIAL REPO) ---
@@ -59,10 +59,7 @@ sudo systemctl enable --now NetworkManager
 # Bluetooth
 sudo systemctl enable --now bluetooth.service
 
-# Syncthing (USER SERVICE)
-sudo systemctl enable --now syncthing.service
-
-# Keep user service alive after logout
-loginctl enable-linger $USER
+# ly login manager
+sudo systemctl enable --now ly.service
 
 echo "Rebuild selesai! Sistem lo bener-bener clean & lean sekarang Fal."
