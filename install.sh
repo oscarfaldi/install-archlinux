@@ -18,13 +18,13 @@ fi
 # --- 3. GRAPHICS & CORE ---
 # Nvidia driver & XDG Portal (biar browser bisa buka file/folder)
 sudo pacman -S --noconfirm \
-    hyprland nvidia nvidia-utils \
+    hyprland nvidia-dkms nvidia-utils \
     xdg-desktop-portal-hyprland
 
 # --- 4. NETWORK & ACCESS ---
 # NetworkManager, Bluetooth, NFS (buat NAS), & Polkit (Pop-up Password)
 sudo pacman -S --noconfirm \
-    networkmanager nmtui bluez bluez-utils \
+    networkmanager bluez bluez-utils \
     nfs-utils gvfs-nfs gvfs polkit-kde-agent
 
 # --- 5. AUDIO & MEDIA ENGINE ---
@@ -50,29 +50,19 @@ sudo pacman -S --needed --noconfirm \
 # --- 8. AUR APPS (THE FINAL TOUCH) ---
 # Brave, OnlyOffice, Hyprshot, Wallpaper tool, Theme Manager
 paru -S --noconfirm \
-    brave-bin onlyoffice-bin hyprshot swww \
+    brave-bin onlyoffice-bin hyprshot swww
 
 # --- 9. FINISHING ---
-# Aktifkan services agar langsung jalan
+# Aktifkan network services agar langsung jalan
 sudo systemctl enable --now NetworkManager
-sudo systemctl enable --now bluetooth
-sudo systemctl enable --now syncthing
 
-# --- 10. SYSTEMD SYSTEM AUTOMATIC LOGIN (BYPASS PASSWORD AT BOOT) ---
-echo "Configuring systemd getty for automatic passwordless login..."
-sudo mkdir -p /etc/systemd/system/getty@tty1.service.d
-cat << EOF | sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf [Service]
-ExecStart=
-ExecStart=-/sbin/agetty --autologin oscarfaldi --noclear %I \$TERM
-EOF
+# Bluetooth
+sudo systemctl enable --now bluetooth.service
 
-# --- 11. BASH PROFILE AUTO-START DESKTOP ---
-echo "Configuring ~/.bash_profile to trigger Hyprland automatically..."
-cat << 'EOF' > ~/.bash_profile
-# Jika sistem mendeteksi user berhasil masuk ke TTY1, langsung eksekusi Hyprland
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec Hyprland
-fi
-EOF
+# Syncthing (USER SERVICE)
+sudo systemctl enable --now syncthing.service
 
-echo "Rebuild selesai! Sistem lo bener-bener clean & lean sekarang."
+# Keep user service alive after logout
+loginctl enable-linger $USER
+
+echo "Rebuild selesai! Sistem lo bener-bener clean & lean sekarang Fal."
