@@ -57,7 +57,7 @@ sudo pacman -S --needed --noconfirm \
 # --- 6. SYSTEM UTILS & FONTS ---
 # Kitty (Terminal), JetBrains Mono (Font), btop (Task Manager), hypridle (Timeout)
 sudo pacman -S --noconfirm \
-    alacritty sddm ttf-jetbrains-mono-nerd \
+    alacritty ttf-jetbrains-mono-nerd \
     fastfetch btop hypridle wl-clipboard \
     ffmpegthumbnailer tumbler ufw mousepad \
     zoxide eza bat gnome-calculator hyprpicker hyprland-qtutils
@@ -86,8 +86,5 @@ sudo systemctl enable --now ufw
 
 # Bluetooth
 sudo systemctl enable --now bluetooth.service
-
-# sddm login manager
-sudo systemctl enable --now sddm
 
 echo "Rebuild selesai! Sistem lo bener-bener clean & lean sekarang Fal."
