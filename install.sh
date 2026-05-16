@@ -4,7 +4,7 @@
 set -e
 
 # Variable untuk workspace build AUR
-BUILD_DIR="/home/oscarfaldi/downloads"
+BUILD_DIR="$HOME/downloads"
 
 # --- 1. BOOTSTRAP: TOOLS ---
 # base-devel (alat rakit), git (buat narik paru)
@@ -20,17 +20,17 @@ if ! command -v paru &> /dev/null; then
     cd "$BUILD_DIR"
     
     # Bersihkan sisa clone lama jika ada konflik sebelumnya
-    rm -rf paru-bin
+    rm -rf paru
     
-    git clone https://aur.archlinux.org/paru-bin.git
-    cd paru-bin
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
     
     # Makepkg dijalankan, set -e akan menangkap jika kompilasi gagal di sini
     makepkg -si --noconfirm
     
     # Clean up setelah berhasil compile
     cd ..
-    rm -rf paru-bin
+    rm -rf paru
     cd ~
 else
     echo "Paru sudah terinstall, skipping..."
@@ -39,7 +39,7 @@ fi
 # --- 3. GRAPHICS & CORE ---
 # Nvidia driver & XDG Portal (biar browser bisa buka file/folder)
 sudo pacman -S --noconfirm \
-    hyprland nvidia-dkms nvidia-utils \
+    hyprland \
     xdg-desktop-portal-hyprland xdg-utils
 
 # --- 4. NETWORK & ACCESS ---
@@ -58,7 +58,9 @@ sudo pacman -S --needed --noconfirm \
 # Kitty (Terminal), JetBrains Mono (Font), btop (Task Manager), hypridle (Timeout)
 sudo pacman -S --noconfirm \
     alacritty sddm ttf-jetbrains-mono-nerd \
-    fastfetch btop hypridle
+    fastfetch btop hypridle wl-clipboard \
+    ffmpegthumbnailer tumbler ufw mousepad \
+    zoxide eza bat gnome-calculator hyprpicker hyprland-qtutils
 
 # --- 7. APPS (OFFICIAL REPO) ---
 # Thunar, Waybar, Mako (Notification), Rofi (Application Launcher Native Wayland)
@@ -66,7 +68,9 @@ sudo pacman -S --needed --noconfirm \
     thunar waybar qt5-wayland qt6-wayland \
     okular mpv imv obsidian syncthing \
     grim slurp thunar-archive-plugin thunar-volman \
-    mako rofi
+    mako rofi file-roller unzip p7zip unrar \
+    ripgrep fd fzf \
+    noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 
 # --- 8. AUR APPS (THE FINAL TOUCH) ---
 # Brave, OnlyOffice, Hyprshot, Wallpaper tool, Theme Manager
@@ -76,6 +80,9 @@ paru -S --noconfirm \
 # --- 9. FINISHING ---
 # Aktifkan network services agar langsung jalan
 sudo systemctl enable --now NetworkManager
+
+# Aktifin firewall
+sudo systemctl enable --now ufw
 
 # Bluetooth
 sudo systemctl enable --now bluetooth.service
