@@ -39,14 +39,18 @@ fi
 # --- 3. GRAPHICS & CORE ---
 # Nvidia driver & XDG Portal (biar browser bisa buka file/folder)
 sudo pacman -S --noconfirm \
-    hyprland \
-    xdg-desktop-portal-hyprland xdg-utils
+    niri \
+    xwayland-satellite \
+    xdg-desktop-portal-gtk \
+    xdg-desktop-portal-gnome \
+    xdg-utils
 
 # --- 4. NETWORK & ACCESS ---
 # NetworkManager, Bluetooth, NFS (buat NAS), & Polkit (Pop-up Password)
 sudo pacman -S --noconfirm \
     networkmanager bluez bluez-utils \
-    nfs-utils gvfs-nfs gvfs polkit-kde-agent
+    nfs-utils gvfs-nfs gvfs \
+    polkit-kde-agent
 
 # --- 5. AUDIO & MEDIA ENGINE ---
 # Pipewire (Audio), wireplumber (Session manager), ffmpeg (Codecs)
@@ -58,16 +62,18 @@ sudo pacman -S --needed --noconfirm \
 # Kitty (Terminal), JetBrains Mono (Font), btop (Task Manager), hypridle (Timeout)
 sudo pacman -S --noconfirm \
     alacritty ttf-jetbrains-mono-nerd \
-    fastfetch btop hypridle wl-clipboard \
-    ffmpegthumbnailer tumbler ufw mousepad \
-    zoxide eza bat gnome-calculator hyprpicker hyprland-qtutils
+    greetd greetd-tuigreet
+    fastfetch btop swayidle swaylock \
+    wl-clipboard ffmpegthumbnailer tumbler \
+    ufw mousepad zoxide eza bat \
+    gnome-calculator hyprpicker hyprland-qtutils
 
 # --- 7. APPS (OFFICIAL REPO) ---
 # Thunar, Waybar, Mako (Notification), Rofi (Application Launcher Native Wayland)
 sudo pacman -S --needed --noconfirm \
     thunar waybar qt5-wayland qt6-wayland \
     okular mpv imv obsidian syncthing \
-    grim slurp thunar-archive-plugin thunar-volman \
+    grim slurp grimblast thunar-archive-plugin thunar-volman \
     mako rofi file-roller unzip p7zip unrar \
     ripgrep fd fzf \
     noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
@@ -75,11 +81,14 @@ sudo pacman -S --needed --noconfirm \
 # --- 8. AUR APPS (THE FINAL TOUCH) ---
 # Brave, OnlyOffice, Hyprshot, Wallpaper tool, Theme Manager
 paru -S --noconfirm \
-    brave-bin onlyoffice-bin hyprshot swww
+    brave-bin onlyoffice-bin swww
 
 # --- 9. FINISHING ---
 # Aktifkan network services agar langsung jalan
 sudo systemctl enable --now NetworkManager
+
+# Aktifkan greeter greetd
+sudo systemctl enable greetd
 
 # Aktifin firewall
 sudo systemctl enable --now ufw
