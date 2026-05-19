@@ -62,7 +62,7 @@ sudo pacman -S --needed --noconfirm \
 # Kitty (Terminal), JetBrains Mono (Font), btop (Task Manager), hypridle (Timeout)
 sudo pacman -S --noconfirm \
     alacritty ttf-jetbrains-mono-nerd \
-    greetd greetd-tuigreet
+    greetd greetd-tuigreet \
     fastfetch btop swayidle swaylock \
     wl-clipboard ffmpegthumbnailer tumbler \
     ufw mousepad zoxide eza bat \
