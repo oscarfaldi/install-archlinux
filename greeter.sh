@@ -11,7 +11,7 @@ sudo tee /etc/greetd/config.toml > /dev/null <<EOF
 vt = 1
 
 [default_session]
-command = "tuigreet --cmd Hyprland"
+command = "tuigreet --cmd niri-session"
 user = "greeter"
 EOF
 
