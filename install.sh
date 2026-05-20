@@ -105,7 +105,8 @@ sudo pacman -S --needed --noconfirm \
     thunar-volman \
     libnotify \
     mako \
-    rofi \
+    fuzzel \
+    playerctl \
     file-roller \
     unzip \
     p7zip \
