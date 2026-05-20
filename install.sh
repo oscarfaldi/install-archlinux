@@ -71,8 +71,6 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --noconfirm \
     alacritty \
     ttf-jetbrains-mono-nerd \
-    greetd \
-    greetd-tuigreet \
     fastfetch \
     btop \
     swayidle \
@@ -129,9 +127,6 @@ paru -S --noconfirm \
 # --- 9. FINISHING ---
 # Aktifkan network services agar langsung jalan
 sudo systemctl enable --now NetworkManager
-
-# Aktifkan greeter greetd
-sudo systemctl enable greetd
 
 # Aktifin firewall
 sudo systemctl enable --now ufw
