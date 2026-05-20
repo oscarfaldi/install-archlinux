@@ -2,22 +2,22 @@
 
 set -euo pipefail
 
-sudo pacman -S --needed --noconfirm 
-niri 
-xwayland-satellite 
-xdg-desktop-portal-gtk 
-xdg-desktop-portal-gnome 
-xdg-utils 
-waybar 
-mako 
-fuzzel 
-swaylock 
-swayidle 
-grim 
-slurp 
-libnotify 
-playerctl 
-qt5-wayland 
+sudo pacman -S --needed --noconfirm \
+niri \
+xwayland-satellite \
+xdg-desktop-portal-gtk \
+xdg-desktop-portal-gnome \
+xdg-utils \
+waybar \
+mako \
+fuzzel \
+swaylock \
+swayidle \
+grim \
+slurp \
+libnotify \
+playerctl \
+qt5-wayland \
 qt6-wayland
 
 mkdir -p ~/.config/niri
