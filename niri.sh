@@ -26,7 +26,7 @@ mkdir -p ~/Pictures/Screenshots
 
 # Copy default config hanya jika user config belum ada
 if [ ! -f ~/.config/niri/config.kdl ]; then
-    cp /usr/share/niri/config.kdl ~/.config/niri/config.kdl
+    cp /etc/niri/config.kdl ~/.config/niri/config.kdl
 fi
 
 # Disable startup hotkey popup (Disambung dengan \ karena lanjut ke baris bawah)
