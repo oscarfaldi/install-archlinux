@@ -101,9 +101,9 @@ sudo pacman -S --needed --noconfirm \
     syncthing \
     grim \
     slurp \
-    grimblast \
     thunar-archive-plugin \
     thunar-volman \
+    libnotify \
     mako \
     rofi \
     file-roller \
