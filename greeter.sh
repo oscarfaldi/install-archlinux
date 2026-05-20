@@ -2,7 +2,9 @@
 
 set -euo pipefail
 
-sudo pacman -S --needed --noconfirm greetd tuigreet
+sudo pacman -S --needed --noconfirm \
+    greetd \
+    greetd-tuigreet
 
 sudo mkdir -p /etc/greetd
 
