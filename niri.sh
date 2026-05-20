@@ -38,16 +38,4 @@ grep -q 'spawn-at-startup "mako"' ~/.config/niri/config.kdl || \
     sed -i '/spawn-at-startup "waybar"/a spawn-at-startup "mako"' \
     ~/.config/niri/config.kdl
 
-# Add custom screenshot bind jika belum terdaftar
-if ! grep -q 'Screenshot Saved' ~/.config/niri/config.kdl; then
-    cat >> ~/.config/niri/config.kdl << 'EOF'
-
-binds {
-    Ctrl+Shift+C {
-        spawn-sh "mkdir -p ~/Pictures/Screenshots && FILE=~/Pictures/Screenshots/\$(date +'%Y-%m-%d_%H-%M-%S').png && grim -g \"\$(slurp)\" \"\$FILE\" && notify-send 'Screenshot Saved' \"\$FILE\""
-    }
-}
-EOF
-fi
-
 echo "Niri setup complete."
