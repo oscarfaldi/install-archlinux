@@ -27,6 +27,4 @@ mkdir -p ~/Pictures/Screenshots
 mkdir -p ~/.config/niri
 mkdir -p ~/Pictures/Screenshots
 
-cp config.kdl ~/.config/niri/config.kdl
-
 echo "Niri setup complete."
