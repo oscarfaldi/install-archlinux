@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Pastikan script langsung berhenti jika ada command yang fail
-set -e
+set -euo pipefail
 
 # Variable untuk workspace build AUR
 BUILD_DIR="$HOME/downloads"
