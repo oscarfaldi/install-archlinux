@@ -24,18 +24,18 @@ sudo pacman -S --needed --noconfirm \
 mkdir -p ~/.config/niri
 mkdir -p ~/Pictures/Screenshots
 
-# Copy default config hanya jika user config belum ada
-if [ ! -f ~/.config/niri/config.kdl ]; then
-    cp /etc/niri/config.kdl ~/.config/niri/config.kdl
-fi
+mkdir -p ~/.config/niri
+mkdir -p ~/Pictures/Screenshots
 
-# Disable startup hotkey popup (Disambung dengan \ karena lanjut ke baris bawah)
-sed -i 's|// skip-at-startup|skip-at-startup|' \
-    ~/.config/niri/config.kdl
+cat > ~/.config/niri/config.kdl << 'EOF'
+binds {
+    Mod+T { spawn "alacritty"; }
+    Mod+D { spawn "fuzzel"; }
+    Mod+Shift+E { quit; }
+}
 
-# Start mako automatically jika belum terdaftar
-grep -q 'spawn-at-startup "mako"' ~/.config/niri/config.kdl || \
-    sed -i '/spawn-at-startup "waybar"/a spawn-at-startup "mako"' \
-    ~/.config/niri/config.kdl
+spawn-at-startup "waybar"
+spawn-at-startup "mako"
+EOF
 
 echo "Niri setup complete."
