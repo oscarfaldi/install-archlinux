@@ -27,15 +27,6 @@ mkdir -p ~/Pictures/Screenshots
 mkdir -p ~/.config/niri
 mkdir -p ~/Pictures/Screenshots
 
-cat > ~/.config/niri/config.kdl << 'EOF'
-binds {
-    Mod+T { spawn "alacritty"; }
-    Mod+D { spawn "fuzzel"; }
-    Mod+Shift+E { quit; }
-}
-
-spawn-at-startup "waybar"
-spawn-at-startup "mako"
-EOF
+cp config.kdl ~/.config/niri/config.kdl
 
 echo "Niri setup complete."
