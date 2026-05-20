@@ -48,40 +48,82 @@ sudo pacman -S --noconfirm \
 # --- 4. NETWORK & ACCESS ---
 # NetworkManager, Bluetooth, NFS (buat NAS), & Polkit (Pop-up Password)
 sudo pacman -S --noconfirm \
-    networkmanager bluez bluez-utils \
-    nfs-utils gvfs-nfs gvfs \
+    networkmanager \
+    bluez \
+    bluez-utils \
+    nfs-utils \
+    gvfs-nfs \
+    gvfs \
     polkit-kde-agent
 
 # --- 5. AUDIO & MEDIA ENGINE ---
 # Pipewire (Audio), wireplumber (Session manager), ffmpeg (Codecs)
 sudo pacman -S --needed --noconfirm \
-    pipewire pipewire-pulse wireplumber \
-    ffmpeg libwebp libavif
+    pipewire \
+    pipewire-pulse \
+    wireplumber \
+    ffmpeg \
+    libwebp \
+    libavif
 
 # --- 6. SYSTEM UTILS & FONTS ---
 # Kitty (Terminal), JetBrains Mono (Font), btop (Task Manager), hypridle (Timeout)
 sudo pacman -S --noconfirm \
-    alacritty ttf-jetbrains-mono-nerd \
-    greetd greetd-tuigreet \
-    fastfetch btop swayidle swaylock \
-    wl-clipboard ffmpegthumbnailer tumbler \
-    ufw mousepad zoxide eza bat \
-    gnome-calculator hyprpicker hyprland-qtutils
+    alacritty \
+    ttf-jetbrains-mono-nerd \
+    greetd \
+    greetd-tuigreet \
+    fastfetch \
+    btop \
+    swayidle \
+    swaylock \
+    wl-clipboard \
+    ffmpegthumbnailer \
+    tumbler \
+    ufw \
+    mousepad \
+    zoxide \
+    eza \
+    bat \
+    gnome-calculator
 
 # --- 7. APPS (OFFICIAL REPO) ---
 # Thunar, Waybar, Mako (Notification), Rofi (Application Launcher Native Wayland)
 sudo pacman -S --needed --noconfirm \
-    thunar waybar qt5-wayland qt6-wayland \
-    okular mpv imv obsidian syncthing \
-    grim slurp grimblast thunar-archive-plugin thunar-volman \
-    mako rofi file-roller unzip p7zip unrar \
-    ripgrep fd fzf \
-    noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+    thunar \
+    waybar \
+    qt5-wayland \
+    qt6-wayland \
+    okular \
+    mpv \
+    imv \
+    obsidian \
+    syncthing \
+    grim \
+    slurp \
+    grimblast \
+    thunar-archive-plugin \
+    thunar-volman \
+    mako \
+    rofi \
+    file-roller \
+    unzip \
+    p7zip \
+    unrar \
+    ripgrep \
+    fd \
+    fzf \
+    noto-fonts \
+    noto-fonts-cjk \
+    noto-fonts-emoji \
+    noto-fonts-extra
 
 # --- 8. AUR APPS (THE FINAL TOUCH) ---
 # Brave, OnlyOffice, Hyprshot, Wallpaper tool, Theme Manager
 paru -S --noconfirm \
-    brave-bin onlyoffice-bin swww
+    brave-bin \
+    onlyoffice-bin \
+    swww
 
 # --- 9. FINISHING ---
 # Aktifkan network services agar langsung jalan
