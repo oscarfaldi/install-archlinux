@@ -36,15 +36,6 @@ else
     echo "Paru sudah terinstall, skipping..."
 fi
 
-# --- 3. GRAPHICS & CORE ---
-# Nvidia driver & XDG Portal (biar browser bisa buka file/folder)
-sudo pacman -S --noconfirm \
-    niri \
-    xwayland-satellite \
-    xdg-desktop-portal-gtk \
-    xdg-desktop-portal-gnome \
-    xdg-utils
-
 # --- 4. NETWORK & ACCESS ---
 # NetworkManager, Bluetooth, NFS (buat NAS), & Polkit (Pop-up Password)
 sudo pacman -S --noconfirm \
@@ -73,8 +64,6 @@ sudo pacman -S --noconfirm \
     ttf-jetbrains-mono-nerd \
     fastfetch \
     btop \
-    swayidle \
-    swaylock \
     wl-clipboard \
     ffmpegthumbnailer \
     tumbler \
@@ -86,25 +75,16 @@ sudo pacman -S --noconfirm \
     gnome-calculator
 
 # --- 7. APPS (OFFICIAL REPO) ---
-# Thunar, Waybar, Mako (Notification), Rofi (Application Launcher Native Wayland)
+# Thunar and other apps
 sudo pacman -S --needed --noconfirm \
     thunar \
-    waybar \
-    qt5-wayland \
-    qt6-wayland \
     okular \
     mpv \
     imv \
     obsidian \
     syncthing \
-    grim \
-    slurp \
     thunar-archive-plugin \
     thunar-volman \
-    libnotify \
-    mako \
-    fuzzel \
-    playerctl \
     file-roller \
     unzip \
     p7zip \
