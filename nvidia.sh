@@ -2,6 +2,12 @@
 
 set -euo pipefail
 
+# Enable multilib repo if not enabled
+if ! grep -q "^\[multilib\]" /etc/pacman.conf; then
+    sudo sed -i '/#\[multilib\]/,/Include/s/^#//' /etc/pacman.conf
+    sudo pacman -Syu --noconfirm
+fi
+
 sudo pacman -Syu --needed --noconfirm \
     nvidia-open \
     nvidia-utils \
