@@ -21,10 +21,4 @@ sudo pacman -S --needed --noconfirm \
     qt5-wayland \
     qt6-wayland
 
-mkdir -p ~/.config/niri
-mkdir -p ~/Pictures/Screenshots
-
-mkdir -p ~/.config/niri
-mkdir -p ~/Pictures/Screenshots
-
 echo "Niri setup complete."
