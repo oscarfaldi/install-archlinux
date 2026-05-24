@@ -7,7 +7,6 @@ sudo pacman -S --needed --noconfirm \
     niri \
     xwayland-satellite \
     xdg-desktop-portal-gtk \
-    xdg-desktop-portal-gnome \
     xdg-utils \
     waybar \
     mako \
