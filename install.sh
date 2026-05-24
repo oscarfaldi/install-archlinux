@@ -50,6 +50,7 @@ sudo pacman -S --noconfirm \
 # --- 5. AUDIO & MEDIA ENGINE ---
 # Pipewire (Audio), wireplumber (Session manager), ffmpeg (Codecs)
 sudo pacman -S --needed --noconfirm \
+    pavucontrol \
     pipewire \
     pipewire-pulse \
     wireplumber \
@@ -60,6 +61,7 @@ sudo pacman -S --needed --noconfirm \
 # --- 6. SYSTEM UTILS & FONTS ---
 # Kitty (Terminal), JetBrains Mono (Font), btop (Task Manager), hypridle (Timeout)
 sudo pacman -S --noconfirm \
+    nano \
     alacritty \
     ttf-jetbrains-mono-nerd \
     fastfetch \
