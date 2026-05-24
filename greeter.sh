@@ -3,21 +3,16 @@
 set -euo pipefail
 
 sudo pacman -S --needed --noconfirm \
-    greetd \
-    greetd-tuigreet
+    ly
 
-sudo mkdir -p /etc/greetd
+# Disable other display/login managers
+sudo systemctl disable greetd.service 2>/dev/null || true
+sudo systemctl disable sddm.service 2>/dev/null || true
 
-sudo tee /etc/greetd/config.toml > /dev/null <<EOF
-[terminal]
-vt = 1
+# Prevent tty1 conflict
+sudo systemctl disable getty@tty1.service 2>/dev/null || true
 
-[default_session]
-command = "tuigreet --cmd niri-session"
-user = "greeter"
-EOF
+# Enable Ly on tty1
+sudo systemctl enable ly@tty1.service
 
-sudo systemctl disable sddm 2>/dev/null || true
-sudo systemctl enable greetd
-
-echo "greetd + tuigreet installed."
+echo "Ly installed and enabled on tty1."
